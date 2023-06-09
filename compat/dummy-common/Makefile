@@ -48,5 +48,6 @@ endef
 $(eval $(call DummyPackage,kmod-inet-diag,+kmod-netlink-diag,,0.00-0))
 $(eval $(call DummyPackage,kmod-ipt-socket,+kmod-ipt-tproxy,,0.00-0))
 $(eval $(call DummyPackage,iptables-mod-socket,+iptables-mod-tproxy,,0.00-0))
+$(eval $(call DummyPackage,luci-lua-runtime,+luci-base,,0.00-0))
 
 # call BuildPackage - OpenWrt buildroot signature
