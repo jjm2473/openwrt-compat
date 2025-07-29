@@ -37,17 +37,25 @@ define DummyPackage
     PKGARCH:=all
   endef
 
+  ifndef Package/$(1)/install
   define Package/$(1)/install
   # nothing to do
   endef
+  endif
 
   $$(eval $$(call BuildPackage,$(1)))
 
+endef
+
+define Package/libuci20250120/install
+	$(INSTALL_DIR) $(1)/usr/local/lib
+	$(LN) /lib/libuci.so $(1)/usr/local/lib/libuci.so.20250120
 endef
 
 $(eval $(call DummyPackage,kmod-inet-diag,+kmod-netlink-diag,,0.00-0))
 $(eval $(call DummyPackage,kmod-ipt-socket,+kmod-ipt-tproxy,,0.00-0))
 $(eval $(call DummyPackage,iptables-mod-socket,+iptables-mod-tproxy,,0.00-0))
 $(eval $(call DummyPackage,luci-lua-runtime,+luci-base,,0.00-0))
+$(eval $(call DummyPackage,libuci20250120,+libuci,,0.00-0))
 
 # call BuildPackage - OpenWrt buildroot signature
